@@ -1,0 +1,9 @@
+/.dart_tool/
+/.firebase/
+/.idea/
+/build/
+/linux/
+/macos/
+/node_modules/
+/test/
+/windows/
