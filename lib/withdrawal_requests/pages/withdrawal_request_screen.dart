@@ -30,10 +30,10 @@ class _WithDrawalRequestState extends State<WithDrawalRequest> {
   @override
   Widget build(BuildContext context) {
     scrollController.addListener(() {
+      print('scroll length ${scrollController.positions.length}');
       if (scrollController.position.pixels >=
           scrollController.position.maxScrollExtent) {
         withdrawalRequestController.getWithdrawalRequest();
-        print("sumit");
       }
     });
     print(

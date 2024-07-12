@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Utils {
   static void showSuccessMessage(String message) {
@@ -119,5 +120,24 @@ class Utils {
             ],
           );
         });
+  }
+
+  static Future<void> launchWeb(String url) async {
+    try {
+      if (url.startsWith('http://') || url.startsWith('https://')) {
+        if (!await launchUrl(Uri.parse(url))) {
+          throw Exception('Could not launch $url');
+        }
+      } else {
+        if (!await launchUrl(Uri.parse('https://$url'))) {
+          throw Exception('Could not launch $url');
+        }
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('error $e');
+      }
+      //Utils.showErrorMessage('Unable to launch website');
+    }
   }
 }

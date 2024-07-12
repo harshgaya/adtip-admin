@@ -1,3 +1,5 @@
+import 'package:adtip_admin_panel/authentication/pages/login_screen.dart';
+import 'package:adtip_admin_panel/dashboard/pages/dashboard_screen.dart';
 import 'package:adtip_admin_panel/helpers/local_database/sharedpref_key.dart';
 import 'package:adtip_admin_panel/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +8,7 @@ import 'package:get/get.dart';
 import 'helpers/local_database/local_prefs.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await LocalPrefs().init();
   runApp(const MyApp());
 }
@@ -43,8 +46,9 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      initialRoute: token == null ? Routes.LOGIN : Routes.DASHBOARD,
-      getPages: AppPages.routes,
+      home: token == null ? const LoginScreen() : const DashBoardScreen(),
+      // initialRoute: token == null ? Routes.LOGIN : Routes.DASHBOARD,
+      // getPages: AppPages.routes,
     );
   }
 }

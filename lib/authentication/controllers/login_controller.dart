@@ -1,3 +1,4 @@
+import 'package:adtip_admin_panel/dashboard/pages/dashboard_screen.dart';
 import 'package:adtip_admin_panel/helpers/utils/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
@@ -29,7 +30,7 @@ class LoginController extends GetxController {
         var value = LocalPrefs()
             .setStringPref(key: SharedPreferenceKey.UserLoggedIn, value: token)
             ?.then((value) {
-          Get.offAllNamed(Routes.DASHBOARD);
+          Get.offAll(const DashBoardScreen());
         }).catchError((e) {});
       }
 
